@@ -8,6 +8,7 @@
 
   "moduleNameMapper": {
     "^@src/(.*)$": "<rootDir>/src/$1",
-    "\\.(css|sass|scss)$": "identity-obj-proxy"
+    "\\.(css|sass|scss)$": "identity-obj-proxy",
+    "\\.svg": "<rootDir>/config/__mocks__/svg.js"
   }
 }
