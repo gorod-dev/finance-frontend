@@ -8,7 +8,7 @@ on:
       - develop
 
 jobs:
-  build:
+  bootstrap:
     runs-on: ubuntu-latest
 
     strategy:
@@ -23,17 +23,58 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
-      - name: install dependencies
+      - name: Restoring Yarn cache
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: install packages
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
 
-      - name: run tests
-        if: always()
-        run: yarn test
+  code-quality:
+    runs-on: ubuntu-latest
 
-      - name: run prettier
+    strategy:
+      matrix:
+        node-version: [16.13.2]
+
+    needs: bootstrap
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: run check-types
         if: always()
-        run: yarn format
+        run: yarn check-types
 
       - name: run eslint
         if: always()
         run: yarn lint
+
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.13.2]
+
+    needs: bootstrap
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: run tests
+        if: always()
+        run: yarn test
