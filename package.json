@@ -16,6 +16,7 @@
     "check-types": "tsc --project ./tsconfig.json --noEmit"
   },
   "pre-commit": [
+    "check-types",
     "format",
     "lint"
   ],
