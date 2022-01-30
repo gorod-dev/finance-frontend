@@ -33,7 +33,7 @@ jobs:
 
       - name: install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+        run: yarn
 
   code-quality:
     runs-on: ubuntu-latest
