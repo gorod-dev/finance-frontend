@@ -55,7 +55,8 @@ jobs:
       - name: restore cache
         uses: actions/cache@v2
         with:
-          path: node_modules
+          path: |
+            **/node_modules
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: run check-types
@@ -86,7 +87,8 @@ jobs:
       - name: restore cache
         uses: actions/cache@v2
         with:
-          path: node_modules
+          path: |
+            **/node_modules
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: run tests
