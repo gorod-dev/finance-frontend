@@ -20,8 +20,10 @@
     "sort-keys-fix",
     "jest"
   ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "settings": {
-    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
@@ -51,7 +53,6 @@
     ],
     "import/extensions": [
       "error",
-      "ignorePackages",
       {
         "js": "never",
         "jsx": "never",
@@ -103,6 +104,7 @@
       2,
       { "namedComponents": "arrow-function" }
     ],
+    "no-restricted-exports": "off",
     "no-restricted-imports": [
       "error",
       {

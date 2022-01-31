@@ -1,13 +1,14 @@
 import { FC } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Button, ThemeProvider as MUIThemeProvider } from '@mui/material';
+import { ThemeProvider as MUIThemeProvider } from '@mui/material';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components/macro';
-
-import './styles/index.css';
+import { Routing } from '@/pages';
 import { useMUITheme } from './config';
 
+import './styles/index.css';
+
 export const App: FC = () => {
-  const { theme, toggleTheme } = useMUITheme();
+  const { theme } = useMUITheme();
 
   return (
     <>
@@ -15,31 +16,7 @@ export const App: FC = () => {
       <MUIThemeProvider theme={theme}>
         <StyledThemeProvider theme={theme}>
           <main id="app">
-            <Button
-              fullWidth
-              type="button"
-              size="large"
-              variant="contained"
-              color="success"
-              onClick={toggleTheme}
-            >
-              123
-            </Button>
-            <Button
-              fullWidth
-              type="button"
-              size="large"
-              variant="contained"
-              color="secondary"
-            >
-              123
-            </Button>
-            <Button fullWidth type="button" size="large" variant="outlined">
-              123
-            </Button>
-            <Button fullWidth type="button" size="large" variant="text">
-              123
-            </Button>
+            <Routing />
           </main>
         </StyledThemeProvider>
       </MUIThemeProvider>
