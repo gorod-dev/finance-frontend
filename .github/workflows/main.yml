@@ -55,9 +55,12 @@ jobs:
       - name: restore cache
         uses: actions/cache@v2
         with:
-          path: |
-            **/node_modules
+          path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: install packages
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile
 
       - name: run check-types
         if: always()
@@ -87,9 +90,12 @@ jobs:
       - name: restore cache
         uses: actions/cache@v2
         with:
-          path: |
-            **/node_modules
+          path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: install packages
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile
 
       - name: run tests
         if: always()
