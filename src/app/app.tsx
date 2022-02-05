@@ -3,7 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components/macro';
 import { Routing } from '@/pages';
-import { useMUITheme } from './config';
+import { useMUITheme } from './lib';
 
 import './styles/index.css';
 

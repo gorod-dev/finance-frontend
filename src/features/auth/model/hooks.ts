@@ -1,7 +1,9 @@
 import { useFormik } from 'formik';
+import { AuthScheme } from '../lib';
+import { AuthFormValues } from './types';
 
 export const useLoginForm = () => {
-  const formik = useFormik({
+  const formik = useFormik<AuthFormValues>({
     initialValues: {
       login: '',
       password: '',
@@ -9,6 +11,7 @@ export const useLoginForm = () => {
     onSubmit: (values) => {
       console.log(values);
     },
+    validationSchema: AuthScheme,
   });
 
   return { formik };

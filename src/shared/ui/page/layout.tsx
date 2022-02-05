@@ -9,6 +9,7 @@ export const Layout: FC<PageLayout> = ({ children, variant = 'default' }) => {
   if (variant === 'fullsize')
     return (
       <Grid
+        id="fullsize-container"
         container
         item
         xs={12}
