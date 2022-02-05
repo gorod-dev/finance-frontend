@@ -15,9 +15,7 @@ export const App: FC = () => {
       <CssBaseline enableColorScheme />
       <MUIThemeProvider theme={theme}>
         <StyledThemeProvider theme={theme}>
-          <main id="app">
-            <Routing />
-          </main>
+          <Routing />
         </StyledThemeProvider>
       </MUIThemeProvider>
     </>
