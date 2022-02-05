@@ -23,11 +23,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
-      - name: cache yarn dependencies
+      - name: restore cache
         uses: actions/cache@v2
         id: cache-dependencies
         with:
-          path: node_modules
+          path: ./node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-yarn-
 
@@ -54,9 +54,15 @@ jobs:
 
       - name: restore cache
         uses: actions/cache@v2
+        id: cache-dependencies
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          path: ./node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
+
+      - name: install packages
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile
 
       - name: run check-types
         if: always()
@@ -85,9 +91,15 @@ jobs:
 
       - name: restore cache
         uses: actions/cache@v2
+        id: cache-dependencies
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          path: ./node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
+
+      - name: install packages
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile
 
       - name: run tests
         if: always()
