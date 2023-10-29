@@ -41,6 +41,9 @@ jobs:
   code-quality:
     runs-on: ubuntu-latest
 
+    env:
+      GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
     strategy:
       matrix:
         node-version: [16.13.2]
@@ -66,8 +69,6 @@ jobs:
       - name: install packages
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
-        env:
-          GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: run check-types
         if: always()
@@ -80,6 +81,9 @@ jobs:
   tests:
     runs-on: ubuntu-latest
 
+    env:
+      GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
     strategy:
       matrix:
         node-version: [16.13.2]
@@ -105,8 +109,6 @@ jobs:
       - name: install packages
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
-        env:
-          GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: run tests
         if: always()
