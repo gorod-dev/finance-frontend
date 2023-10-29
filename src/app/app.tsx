@@ -6,6 +6,7 @@ import { Routing } from '@/pages';
 import { useMUITheme } from './lib';
 
 import './styles/index.css';
+import '@gorod-dev/kit-playground/dist/style.css';
 
 export const App: FC = () => {
   const { theme } = useMUITheme();

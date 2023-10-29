@@ -34,6 +34,8 @@ jobs:
       - name: install packages
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
+        env:
+          GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   code-quality:
     runs-on: ubuntu-latest
@@ -63,6 +65,8 @@ jobs:
       - name: install packages
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
+        env:
+          GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: run check-types
         if: always()
@@ -100,6 +104,8 @@ jobs:
       - name: install packages
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
+        env:
+          GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: run tests
         if: always()
