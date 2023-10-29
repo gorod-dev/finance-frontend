@@ -34,8 +34,8 @@ jobs:
       - name: install packages
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
-        env:
-          GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      env:
+        GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   code-quality:
     runs-on: ubuntu-latest
