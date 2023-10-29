@@ -40,9 +40,7 @@ jobs:
 
       - name: install packages
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
-        - run: cat ./.env
-        - run: cat ./.npmrc
-        - run: yarn --frozen-lockfile
+        run: cat ./.npmrc && yarn --frozen-lockfile
 
   code-quality:
     runs-on: ubuntu-latest
