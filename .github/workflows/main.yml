@@ -19,7 +19,7 @@ jobs:
         node-version: [16.13.2]
 
     env:
-      GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      GOROD_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -49,7 +49,7 @@ jobs:
       packages: read
 
     env:
-      GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      GOROD_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     strategy:
       matrix:
@@ -93,7 +93,7 @@ jobs:
       packages: read
 
     env:
-      GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      GOROD_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     strategy:
       matrix:
