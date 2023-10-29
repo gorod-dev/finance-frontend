@@ -22,6 +22,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
+        env:
+          GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: restore cache
         uses: actions/cache@v2
@@ -34,8 +36,8 @@ jobs:
       - name: install packages
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
-      env:
-        GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        env:
+          GOROD_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   code-quality:
     runs-on: ubuntu-latest
