@@ -1,6 +1,7 @@
 import { FC, lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { WithAuth } from './lib/with-auth';
+import { WithoutAuth } from './lib/without-auth';
 
 const HomePage = lazy(() => import('./home'));
 const AuthPage = lazy(() => import('./auth'));
@@ -11,7 +12,14 @@ export const Routing: FC = () => (
   <Suspense fallback={<div />}>
     <BrowserRouter>
       <Routes>
-        <Route path="/auth" element={<AuthPage />} />
+        <Route
+          path="/auth"
+          element={
+            <WithoutAuth>
+              <AuthPage />
+            </WithoutAuth>
+          }
+        />
         <Route
           path="/home"
           element={
