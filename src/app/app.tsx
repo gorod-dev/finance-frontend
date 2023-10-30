@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components/macro';
@@ -12,13 +12,13 @@ export const App: FC = () => {
   const { theme } = useMUITheme();
 
   return (
-    <>
+    <Suspense fallback={<div />}>
       <CssBaseline enableColorScheme />
       <MUIThemeProvider theme={theme}>
         <StyledThemeProvider theme={theme}>
           <Routing />
         </StyledThemeProvider>
       </MUIThemeProvider>
-    </>
+    </Suspense>
   );
 };
