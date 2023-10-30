@@ -7,7 +7,7 @@ import { AuthFormValues } from '../model/types';
 export const AuthForm: FC<{
   formik: FormikProps<AuthFormValues>;
 }> = ({ formik }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('auth');
 
   return (
     <form onSubmit={formik.handleSubmit}>

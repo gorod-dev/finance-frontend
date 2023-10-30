@@ -5,7 +5,7 @@ import { AuthForm, useLoginForm } from '@/features/auth';
 
 export const Login: React.FC = () => {
   const { formik } = useLoginForm();
-  const { t } = useTranslation();
+  const { t } = useTranslation('auth');
 
   return (
     <Paper variant="outlined">

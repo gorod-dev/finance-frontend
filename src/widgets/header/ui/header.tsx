@@ -2,7 +2,7 @@ import { AppBar, Box, Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 export const Header: React.FC = () => {
-  const { i18n, t } = useTranslation();
+  const { i18n, t } = useTranslation('auth');
 
   const current = i18n.language;
 
