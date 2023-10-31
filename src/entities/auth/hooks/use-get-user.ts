@@ -6,7 +6,10 @@ import { useUserStore } from '../model';
 export const useGetUser = () => {
   const setUserData = useUserStore((state) => state.setUserData);
 
-  const { data, error, ...rest } = useQuery(['user'], () => api.getUser());
+  const { data, error, ...rest } = useQuery({
+    queryKey: ['user'],
+    queryFn: () => api.getUser(),
+  });
 
   useEffect(() => {
     if (data) {

@@ -5,11 +5,5 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components/macro';
 
 const fakeTheme = createTheme();
 
-export const renderWithTheme = (
-  ui: React.ReactElement,
-  options?: Omit<RenderOptions, 'queries'>,
-) =>
-  render(
-    <StyledThemeProvider theme={fakeTheme}>{ui}</StyledThemeProvider>,
-    options,
-  );
+export const renderWithTheme = (ui: React.ReactElement, options?: Omit<RenderOptions, 'queries'>) =>
+  render(<StyledThemeProvider theme={fakeTheme}>{ui}</StyledThemeProvider>, options);

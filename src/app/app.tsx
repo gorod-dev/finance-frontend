@@ -23,14 +23,14 @@ export const App: FC = () => {
 
   return (
     <Suspense fallback={<div />}>
-      <QueryClientProvider client={queryClient}>
-        <CssBaseline enableColorScheme />
-        <MUIThemeProvider theme={theme}>
-          <StyledThemeProvider theme={theme}>
+      <CssBaseline enableColorScheme />
+      <MUIThemeProvider theme={theme}>
+        <StyledThemeProvider theme={theme}>
+          <QueryClientProvider client={queryClient}>
             <Routing />
-          </StyledThemeProvider>
-        </MUIThemeProvider>
-      </QueryClientProvider>
+          </QueryClientProvider>
+        </StyledThemeProvider>
+      </MUIThemeProvider>
     </Suspense>
   );
 };

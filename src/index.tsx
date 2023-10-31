@@ -1,6 +1,6 @@
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { App } from './app';
 
 import './shared/i18n';
 
-render(<App />, document.getElementById('root'));
+createRoot(document.getElementById('root')!).render(<App />);
