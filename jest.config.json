@@ -5,7 +5,9 @@
     "<rootDir>/src/**/*.{spec,test}.{ts,tsx}"
   ],
   "testEnvironment": "jsdom",
-
+  "transformIgnorePatterns": [
+    "<rootDir>/node_modules/(?!@gorod-dev), <rootDir>/node_modules/(?!axios)"
+  ],
   "moduleNameMapper": {
     "^@/(.*)$": "<rootDir>/src/$1",
     "\\.(css|sass|scss)$": "identity-obj-proxy",

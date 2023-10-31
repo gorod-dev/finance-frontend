@@ -19,4 +19,7 @@ export default defineConfig({
       prefix: '@/',
     }),
   ],
+  server: {
+    port: 3030,
+  },
 });

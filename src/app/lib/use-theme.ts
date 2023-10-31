@@ -1,12 +1,14 @@
 import { createTheme } from '@mui/material';
 import { useCallback, useMemo, useState } from 'react';
 
+export const getModeFromLocalStorage = () => {
+  const oldMode = localStorage.getItem('mode');
+  if (oldMode !== 'light' && oldMode !== 'dark') return 'dark';
+  return oldMode;
+};
+
 export const useMUITheme = () => {
-  const getStoredMode = useCallback(() => {
-    const oldMode = localStorage.getItem('mode');
-    if (oldMode !== 'light' && oldMode !== 'dark') return 'dark';
-    return oldMode;
-  }, []);
+  const getStoredMode = useCallback(getModeFromLocalStorage, []);
 
   const [mode, setMode] = useState<'dark' | 'light'>(getStoredMode());
 

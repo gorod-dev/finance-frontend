@@ -1,9 +1,6 @@
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { App } from './app';
 
-render(
-  <div>
-    <App />
-  </div>,
-  document.getElementById('root'),
-);
+import './shared/i18n';
+
+createRoot(document.getElementById('root')!).render(<App />);
