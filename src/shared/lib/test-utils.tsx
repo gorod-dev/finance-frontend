@@ -8,7 +8,10 @@ import { BrowserRouter } from 'react-router-dom';
 const fakeTheme = createTheme();
 const queryClient = new QueryClient();
 
-export const renderWithTheme = (ui: React.ReactElement, options?: Omit<RenderOptions, 'queries'>) =>
+export const renderWithTheme = (
+  ui: React.ReactElement,
+  options?: Omit<RenderOptions, 'queries'>,
+) =>
   render(
     <StyledThemeProvider theme={fakeTheme}>
       <BrowserRouter>
